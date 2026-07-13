@@ -5,6 +5,15 @@ Mini MP4
 
 Easy embeddable MP4 mux/demux library.
 
+> **Fork notice:** this fork carries fuzzer-found memory-safety and
+> denial-of-service fixes for the demuxer (`MP4D_open` and friends):
+> null-pointer derefs from track-less boxes, integer overflows in
+> allocation-size math, unbounded file-controlled allocations, and
+> O(n²) parsing hangs. Found with libFuzzer + ASan/UBSan against
+> malformed inputs. See the commit history for details on each fix.
+> Upstream appears unmaintained; these patches are offered there via
+> pull request.
+
 ## Usage
 #### Muxing
 
